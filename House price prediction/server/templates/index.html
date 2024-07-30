@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengaluru House Price Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>House Price Prediction for Bengaluru</h1>
+        <form id="priceForm", method="post", action="{{ url_for('home') }}">
+            <label for="sqft">Sqft Area:</label>
+            <input type="number" id="sqft" name="sqft" required>
+            
+            <label for="bathrooms">Number of Bathrooms:</label>
+            <input type="number" id="bathrooms" name="bathrooms" min="1" max="6" required>
+            
+            <label for="bedrooms">Number of Bedrooms:</label>
+            <input type="number" id="bedrooms" name="bedrooms" min="1" max="6" required>
+            
+            <label for="location">Location:</label>
+            <select id="location" name="location" required>
+                {% for location in locations %}
+                    <option value='{{ location }}' {% if location == location_get %} selected {% endif %}>{{ location }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit"> Estimate </button>
+        </form>
+        {% if price is not none %}
+            <h3>Estimated Price: {{ price }} Rs.</h3> <a href="{{ url_for('home') }}"> Re estimate? </a>
+        {% endif %}
+    </div>
+
+</body>
+</html>
