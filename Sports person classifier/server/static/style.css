@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 50px;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ccc;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.import-area {
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    background-color: #fff;
+    overflow: hidden; /* Ensure content does not overflow */
+}
+
+.import-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#importArea input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
+
+#importedImage {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain; /* Ensure the image fits within the container */
+}
+
+.instruction {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.result {
+    margin-top: 20px;
+    text-align: left;
+    width: 300px;
+    margin: 20px auto;
+}
+
+.result table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result table, .result th, .result td {
+    border: 1px solid #ccc;
+}
+
+.result th, .result td {
+    padding: 8px;
+    text-align: left;
+}

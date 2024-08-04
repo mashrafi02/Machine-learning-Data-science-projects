@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Player Identification</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="circle"><img src="/static/images/messi15.png" alt="Messi"></div>
+            <div class="circle"><img src="/static/images/ronaldo22.png" alt="Ronaldo"></div>
+            <div class="circle"><img src="/static/images/neymar5.png" alt="Neymar"></div>
+            <div class="circle"><img src="/static/images/lewandski4.png" alt="Lewandowski"></div>
+            <div class="circle"><img src="/static/images/luca_modric14.png" alt="Modric"></div>
+        </div>
+        <div class="import-area">
+            {% if image %}
+                <img src="{{ image }}" alt="Player">
+            {% endif %}
+        </div>
+        <div class="image_input">
+            <form method='POST' enctype='multipart/form-data' action='{{ url_for("upload_file") }}'>
+                <input type='file' name='file' accept="image/*">
+                <button>Submit</button>
+              </form>
+        </div>
+        {% if not result %}
+            <p class="instruction">Identify the football player</p>
+        {% else %}
+            <p class="instruction">{{ result }}</p>
+        {% endif %}
+        <div class="result" id="result">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Probability</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTableBody">
+                    {% if player_probability_dict %}
+                        {% for player, probability in player_probability_dict.items() %}
+                            <tr>
+                                <td>{{ player }}</td>
+                                <td>{{ probability }}%</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
