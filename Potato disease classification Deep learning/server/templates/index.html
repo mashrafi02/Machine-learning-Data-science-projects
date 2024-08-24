@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Player Identification</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>See the Potato leaf is healthy or not</h2>
+        <div class="import-area">
+            {% if image %}
+                <img src="{{ image }}" alt="Potato leaf">
+            {% endif %}
+        </div>
+        <div class="image_input">
+            <form method='POST' enctype='multipart/form-data' action='{{ url_for("predict") }}'>
+                <input type='file' name='file' accept="image/*">
+                <button>Submit</button>
+              </form>
+        </div>
+        {% if not result %}
+            <p class="instruction">Identify the Potato leaf if its healthy or not</p>
+        {% else %}
+            <p class="instruction">{{ class_label }}</p>
+        {% endif %}
+        <div class="result" id="result">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Health Condition</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTableBody">
+                    {% if result %}
+                            <tr>
+                                <td>{{ class_label }}</td>
+                                <td>{{ result }}%</td>
+                            </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
