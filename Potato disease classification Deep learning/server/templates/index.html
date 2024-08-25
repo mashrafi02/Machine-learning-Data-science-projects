@@ -17,10 +17,12 @@
         <div class="image_input">
             <form method='POST' enctype='multipart/form-data' action='{{ url_for("predict") }}'>
                 <input type='file' name='file' accept="image/*">
-                <button>Submit</button>
+                <button>Check</button>
               </form>
         </div>
-        {% if not result %}
+        {% if comment %}
+        <p class="instruction">{{ comment }}</p>
+        {% elif not result %}
             <p class="instruction">Identify the Potato leaf if its healthy or not</p>
         {% else %}
             <p class="instruction">{{ class_label }}</p>

@@ -1,0 +1,2 @@
+I've deleted all photos from isPotatoLeaf folder which I used to train the second model called model_leaf_detection.keras.
+because photo's names were too long and not maintaining the recommended size of files for git hub 
